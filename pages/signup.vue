@@ -27,6 +27,11 @@
         <div>
           <img class="h-10 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company" />
           <h2 class="mt-8 text-2xl font-bold leading-9 tracking-tight text-gray-900">Sign up for your new account</h2>
+          <p class="mt-2 text-sm leading-6 text-gray-500">
+            Already a member?
+            {{ ' ' }}
+            <a href="/login" class="font-semibold text-indigo-600 hover:text-indigo-500">Sign In</a>
+          </p>
         </div>
 
         <div class="mt-10">
