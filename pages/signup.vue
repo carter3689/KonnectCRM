@@ -36,7 +36,46 @@
 
         <div class="mt-10">
           <div>
-            <form action="#" method="POST" class="space-y-6">
+            <FormKit 
+            type="form"
+            id="signupForm"
+            submit-label="Login"
+            @submit="submitForm"
+            >
+
+                <FormKit
+                type="email"
+                name="email"
+                id="name"
+                label="Email Address"
+                placeholder="“jondoe@gmail.com”"
+                validation="required|email"
+                validation-visibility="dirty"
+            />
+
+            <FormKit 
+            type="password"
+            name="password"
+            id="form-pass"
+            label="Password"
+            validation="required"
+            validation-visibility="dirty"
+            />
+
+            <FormKit
+            type="checkbox"
+            label="Remember Me"
+            name="remember"
+            :value="true"
+            validation="accepted"
+            validation-visibility="dirty"
+          />
+            <span>
+                <a href="#" class="font-semibold text-indigo-600 hover:text-indigo-500">Forgot password?</a>
+            </span>
+          <pre wrap>{{ value }}</pre>
+            </FormKit>
+            <!-- <form action="#" method="POST" class="space-y-6">
               <div>
                 <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
                 <div class="mt-2">
@@ -65,7 +104,7 @@
               <div>
                 <button type="submit" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign up</button>
               </div>
-            </form>
+            </form> -->
           </div>
 
           <div class="mt-10">
@@ -104,6 +143,23 @@
 </template>
 
 <script lang="ts">
+    import { ref } from 'vue';
+    const myForm = ref(null)
+
+    async function submitForm(formData) {
+        const { data, error } = await supabase.auth.signUp({
+            email: data.email,
+            password: data.password,
+            options: {
+                emailRedirectTo: 'http://localhost:3000/confirm'
+            }
+        })
+        //Retrieve data
+
+        // Submit
+        console.log(data)
+        this.$formkit.reset('signupForm')
+    }
     definePageMeta({
       layout: false,
     });

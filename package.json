@@ -11,6 +11,7 @@
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
+    "@nuxtjs/supabase": "^1.1.4",
     "@nuxtjs/tailwindcss": "^6.10.1",
     "nuxt": "^3.8.2",
     "nuxt-headlessui": "^1.1.4",
@@ -19,6 +20,8 @@
     "vue-router": "^4.2.5"
   },
   "dependencies": {
+    "@formkit/icons": "^1.4.0",
+    "@formkit/nuxt": "^1.4.0",
     "@heroicons/vue": "^2.0.18"
   }
 }
