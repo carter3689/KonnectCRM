@@ -13,19 +13,18 @@ export default defineNuxtConfig({
     autoImport: true
   },
   runtimeConfig: {
-    secret: process.env.NUXT_PUBLIC_SUPABASE_KEY,
+    secret: process.env.SUPABASE_KEY,
     public: {
-      url: process.env.NUXT_PUBLIC_SUPABASE_URL
+      url: process.env.SUPABASE_URL
   },
   supabase: {
-    url: process.env.NUXT_PUBLIC_SUPABASE_URL,
-    key: process.env.NUXT_PUBLIC_SUPABASE_KEY,
-    redirect: true
+    url: process.env.SUPABASE_URL,
+    key: process.env.SUPABASE_KEY,
+    redirectOptions: {
+      login: '/login',
+      callback: '/confirm',
+      exclude: ['/']
+    }
   },
-  redirectOptions: {
-    login: '/login',
-    callback: '/confirm',
-    exclude: [],
-  }
   }
 })
